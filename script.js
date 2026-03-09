@@ -14,7 +14,12 @@ btn.addEventListener("click", () => {
 let searchBtn = document.getElementById("searchBtn")
 let city = document.getElementById("cityInput")
 
-
+searchBtn.addEventListener("click", () => {
+    let cityName = city.value.trim();
+    if(cityName){
+        searchWeather(cityName);
+    }
+});
 const API_KEY = 'f81ba25ab232a2af495e9d1455d7434c';
 
 async function getWeather(city) {
@@ -27,6 +32,7 @@ async function getWeather(city) {
         throw new Error("Data could not found")
     }
     const data = await response.json()
+  
     return data;
 
 }
